@@ -1,0 +1,339 @@
+/* =====================================================================
+   styles.css: tokens, components and page layout.
+   1. TOKENS      colours (light + dark), type, shape, motion
+   2. COMPONENTS  highlighter, primary button, link
+   3. PAGE        layout
+   Change a colour or font in section 1 only.
+   ===================================================================== */
+
+/* ---------- 1. TOKENS ----------
+   Palette: cream background, deep-green text, green slabs, petal pink accent. */
+:root {
+  color-scheme: light;
+
+  /* surfaces + text (these flip in dark mode) */
+  --surface: #fbf6e6;
+  --surface-sunken: #f3ecd6;
+  --surface-raised: #fffcf1;
+  --ink: #1c3a2d;
+  --ink-muted: #4d6857;
+  --hairline: #e6dfc6;
+  --focus-ring: #1c3a2d;
+
+  --rule: color-mix(in srgb, var(--ink) 30%, transparent);
+
+  --stage: #c9ddbc; /* the green slabs (About, Contact): #77b477 at 38% over cream, as one solid colour */
+  --on-stage: #1c3a2d;
+  --on-stage-muted: #2a4638;
+
+  /* brand colours (constant: they look the same in both themes) */
+  --cream: #fbf6e6;
+  --sage: #a8c4a0;
+  --petal: #f8cfdb;
+  --rose: #f2a9bf;
+  --pine: #1c3a2d;
+  --on-accent: #1c3a2d;
+  --signal: #3f7a58;
+
+  /* the highlighter: a soft petal wash, with a slightly deeper line for the resting underline */
+  --hl: #f8cfdb;
+  --hl-line: #f0a3ba;
+  --edge: #ee97b4;
+
+  /* type */
+  --font-display: "Instrument Serif", "Times New Roman", Georgia, serif;
+  --font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* shape */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-slab: 80px;
+  --radius-pill: 999px;
+
+  /* motion */
+  --dur-hl: 0.38s;
+  --dur-color: 0.25s;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #14251d;
+    --surface-sunken: #0e1b15;
+    --surface-raised: #1c3327;
+    --ink: #fbf6e6;
+    --ink-muted: #b4c7b9;
+    --hairline: #2c4739;
+    --focus-ring: #fbf6e6;
+    --stage: #2b4d3d;
+    --on-stage: #fbf6e6;
+    --on-stage-muted: #c7d8cb;
+    --signal: #7fb896;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #14251d;
+  --surface-sunken: #0e1b15;
+  --surface-raised: #1c3327;
+  --ink: #fbf6e6;
+  --ink-muted: #b4c7b9;
+  --hairline: #2c4739;
+  --focus-ring: #fbf6e6;
+  --stage: #2b4d3d;
+  --on-stage: #fbf6e6;
+  --on-stage-muted: #c7d8cb;
+  --signal: #7fb896;
+}
+
+/* ---------- 2. COMPONENTS ----------
+   Two levels of action, one hover idea (the highlighter).
+   - Primary action (few per page): a petal button. On hover its edge turns rose.
+   - Everything else (links, project titles, secondary actions): a word on a thin petal line.
+     On hover or focus the line grows into a petal highlight behind the word.
+   Nothing wiggles and nothing scales. */
+
+/* Word highlight. Hosts set --ul (resting underline thickness). */
+.hl {
+  --ul: 0px; --hs: 0%;
+  padding: 0.04em 0.28em;
+  margin: -0.04em -0.28em;
+  border-radius: 0.18em;
+  background-image: linear-gradient(var(--hl-line), var(--hl-line)), linear-gradient(var(--hl), var(--hl));
+  background-repeat: no-repeat;
+  background-position: 0 100%, 0 100%;
+  background-size: 100% var(--ul), var(--hs) 100%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size var(--dur-hl) var(--ease-out), color var(--dur-color);
+}
+:is(.link, .proj__toggle, .reach__link):is(:hover, :focus-visible) .hl {
+  --hs: 100%;
+  color: var(--on-accent);
+}
+.link .hl, .reach__link .hl { --ul: 2px; }
+
+/* Phrase inside running text */
+.mark {
+  --ul: 0.12em; --hs: 0%;
+  padding: 0.04em 0.28em; margin: -0.04em -0.28em; border-radius: 0.18em; cursor: default;
+  background-image: linear-gradient(var(--hl-line), var(--hl-line)), linear-gradient(var(--hl), var(--hl));
+  background-repeat: no-repeat; background-position: 0 100%, 0 100%;
+  background-size: 100% var(--ul), var(--hs) 100%;
+  transition: background-size var(--dur-hl) var(--ease-out), color var(--dur-color);
+}
+.mark:is(:hover, :focus-visible) { --hs: 100%; color: var(--on-accent); }
+
+/* Primary button: already highlighted. On hover the edge turns rose. */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  font: 500 1rem/1 var(--font-sans); color: var(--on-accent); text-decoration: none; cursor: pointer;
+  background: var(--hl); border: 2px solid var(--hl); border-radius: var(--radius-md);
+  transition: border-color var(--dur-color);
+}
+.btn:is(:hover, :focus-visible) { border-color: var(--edge); }
+.btn--compact { padding: 0.6rem 1rem; font-size: 0.9375rem; }
+.btn svg { width: 1rem; height: 1rem; flex: none; }
+
+/* Link: a word on a thin petal line. Also used for secondary actions. */
+.link {
+  display: inline-flex; align-items: center; gap: 0.35rem; padding: 0; background: none; border: 0;
+  font: 500 1rem/1.3 var(--font-sans); color: var(--ink); text-decoration: none; cursor: pointer;
+}
+.link svg { width: 0.85em; height: 0.85em; flex: none; }
+
+.btn:focus-visible, .link:focus-visible, .mark:focus-visible, .reach__link:focus-visible, .skip:focus-visible, .proj__toggle:focus-visible {
+  outline: 2px solid var(--focus-ring); outline-offset: 3px;
+}
+
+/* Slab corners: radius scrubbed by scroll (--r-top / --r-bottom, written by main.js) */
+.slab { border-radius: var(--r-top, 0px) var(--r-top, 0px) var(--r-bottom, 0px) var(--r-bottom, 0px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hl, .mark, .btn { transition: none; }
+}
+
+/* ---------- 3. PAGE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 90%; scroll-behavior: smooth; } /* the whole page is sized in rem: this sets its overall scale */
+body { margin: 0; background: var(--surface); color: var(--ink); font: 400 1rem/1.4 var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--hl); color: var(--on-accent); }
+h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; }
+em { font-style: italic; }
+svg { max-width: 100%; }
+section[id] { scroll-margin-top: 4rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.wrap { width: 100%; max-width: 75rem; margin-inline: auto; padding-inline: max(16px, 4vw); }
+.eyebrow { font: 500 0.8125rem/1.3 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+.skip { position: absolute; left: 16px; top: -4rem; z-index: 300; padding: 0.75rem 1rem; background: var(--hl); color: var(--on-accent); border-radius: var(--radius-md); font-weight: 600; text-decoration: none; }
+.skip:focus { top: 1rem; }
+
+/* ---- Header: where to go, and how to reach me ---- */
+.site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 100; background: color-mix(in srgb, var(--surface) 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hairline); }
+.site-header__in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
+.site-header nav { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2rem); }
+
+/* ---- Hero: type only. Colour is saved for what comes next. ---- */
+.hero { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(4rem, 8vw, 6.5rem); }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.75rem); line-height: 1; letter-spacing: -0.02em; }
+.status { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; font: 500 0.9375rem/1.3 var(--font-sans); color: var(--ink-muted); }
+.status__dot { width: 0.55rem; height: 0.55rem; border-radius: var(--radius-pill); background: var(--signal); outline: 0.25rem solid color-mix(in srgb, var(--signal) 22%, transparent); }
+.hero h1 em { display: block; } /* "a full-stack software engineer." always gets its own line */
+/* The hero's one animation: a petal marker sweeps under the key phrase once, after load */
+.sweep { --sweep-h: 0.32em; --sweep-y: 88%; background: linear-gradient(var(--hl), var(--hl)) no-repeat 0 var(--sweep-y) / 0% var(--sweep-h); -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  animation: sweep 0.9s var(--ease-out) 0.5s forwards; }
+@keyframes sweep { to { background-size: 100% var(--sweep-h); } }
+/* dark scheme: cream text over petal is hard to read, so the marker becomes a thin line under the words */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sweep { --sweep-h: 0.1em; --sweep-y: 100%; } }
+:root[data-theme="dark"] .sweep { --sweep-h: 0.1em; --sweep-y: 100%; }
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.75rem; margin-top: 2.5rem; }
+.skills { margin-top: 1.75rem; font: 500 0.9375rem/1.4 var(--font-sans); color: var(--ink-muted); }
+
+/* ---- Work: a plain list on the cream page, so it can grow as long as it needs. Click a row to open it. ---- */
+.work { --cols: minmax(0, 1.15fr) minmax(0, 1.6fr) minmax(0, 1fr) 2.25rem; --gap: clamp(1rem, 2.5vw, 2rem);
+  padding-block: clamp(4rem, 8vw, 6.5rem); }
+.work__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; margin-bottom: clamp(1.5rem, 3vw, 2.25rem); }
+.work__title { font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 1; letter-spacing: -0.01em; }
+.work__hint { font: 500 0.9375rem/1.3 var(--font-sans); color: var(--ink-muted); }
+.proj-list { margin: 0; padding: 0; list-style: none; border-bottom: 1.5px solid var(--rule); }
+.proj { border-top: 1.5px solid var(--rule); }
+/* Toggle stays pinned while its panel is open. Must be the <li>'s direct child to stick. */
+.proj > h3 { font: inherit; position: sticky; top: 4rem; z-index: 5; background: var(--surface); }
+.proj__toggle { display: grid; grid-template-columns: var(--cols); align-items: center; gap: 0 var(--gap); width: 100%; padding: 1.4rem 0; background: none; border: 0; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.proj__title { font: 400 clamp(1.75rem, 3vw, 2.5rem)/1.05 var(--font-display); letter-spacing: -0.01em; }
+.proj__desc { font: 400 1rem/1.35 var(--font-sans); color: var(--ink-muted); text-align: center; }
+.proj__tags { font: 500 0.875rem/1.35 var(--font-sans); text-align: right; }
+.proj__end { display: flex; align-items: center; justify-content: flex-end; }
+.proj__icon { position: relative; flex: none; width: 1.1rem; height: 1.1rem; }
+.proj__icon::before, .proj__icon::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: currentColor; border-radius: 2px; transition: transform 0.35s var(--ease-out); }
+.proj__icon::after { transform: rotate(90deg); }
+.proj__toggle[aria-expanded="true"] .proj__icon::after { transform: rotate(0deg); }
+
+.proj__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s var(--ease-out); }
+.proj__panel[data-open] { grid-template-rows: 1fr; }
+.proj__clip { min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 0s 0.45s; }
+.proj__panel[data-open] .proj__clip { visibility: visible; transition-delay: 0s; }
+.proj__panel[data-settled] .proj__clip { overflow: visible; } /* set by main.js once the open animation ends */
+.proj__inner { display: grid; grid-template-columns: var(--cols); gap: 1.5rem var(--gap); padding: 0.25rem 0 2.25rem; }
+.proj__meta { grid-column: 1; display: grid; gap: 0.9rem; align-content: start; }
+.proj__meta dl { display: contents; }
+.proj__meta dt { font: 500 0.75rem/1.3 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+.proj__meta dd { margin-top: 0.1rem; font: 500 0.9375rem/1.35 var(--font-sans); }
+.proj__links { display: grid; justify-items: start; gap: 0.6rem; margin-top: 0.4rem; }
+.proj__text { grid-column: 2 / span 2; display: grid; gap: 1.1rem; align-content: start; max-width: 62ch; }
+.proj__text h4 { margin-bottom: 0.2rem; font: 500 0.75rem/1.3 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+.proj__text p { font: 400 1.0625rem/1.5 var(--font-sans); }
+.proj__text ul { display: grid; gap: 0.4rem; margin: 0; padding-left: 1.1em; font: 400 1.0625rem/1.45 var(--font-sans); }
+.proj__text li::marker { color: var(--ink-muted); }
+
+/* ---- About: green slab, heading left, content right ---- */
+.about { background: var(--stage); color: var(--on-stage); padding-block: clamp(4rem, 9vw, 7rem); }
+.about .eyebrow, .about__more, .facts dt { color: var(--on-stage-muted); }
+.about__grid { display: grid; grid-template-columns: minmax(240px, 380px) 1fr; gap: clamp(2rem, 6vw, 5.5rem); align-items: start; }
+.about__title em, .contact__title em { display: block; }
+.about__title { margin-top: 0.6rem; font-size: clamp(2.75rem, 6vw, 4.75rem); line-height: 0.98; letter-spacing: -0.02em; }
+.about__lede { max-width: 32ch; margin-top: 1.5rem; font: 400 clamp(1.5rem, 3vw, 2.125rem)/1.2 var(--font-display); }
+.about__more { max-width: 52ch; margin-top: 1.25rem; font: 400 1.125rem/1.5 var(--font-sans); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.facts div { padding-top: 0.75rem; border-top: 1.5px solid var(--on-stage); }
+.facts dt { margin-bottom: 0.25rem; font: 500 0.75rem/1.3 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; }
+.facts dd { font: 500 1rem/1.35 var(--font-sans); }
+.about :focus-visible { outline-color: var(--on-stage); }
+
+/* ---- Reel: project panel on the toggle's columns (--cols). Layouts:
+   - .reel: meta | write-up
+   - .reel with screens: meta | screens, then .reel__pair (two text blocks)
+   - .reel--feature: same as above; demo comes first on phones ---- */
+.reel { grid-column: 1 / -1; display: grid; grid-template-columns: var(--cols); gap: 2rem var(--gap); align-items: start; }
+.reel > .proj__meta { grid-column: 1; }
+.reel__more { grid-column: 2 / -1; max-width: 68ch; gap: 1.25rem; }
+.reel__pair { grid-column: 1 / -1; max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem var(--gap); }
+.reel__screens { grid-column: 2 / -1; display: grid; gap: 0.5rem; min-width: 0; }
+.reel__frame { --peek: 2.5rem; position: relative; display: flex; gap: 0.75rem; width: 100%; overflow: auto hidden;
+  scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; border-radius: var(--radius-md); }
+.reel__frame::-webkit-scrollbar { display: none; }
+.reel__frame::after { content: ""; flex: 0 0 calc(var(--peek) - 0.75rem); } /* room for the last screen to sit flush left too */
+.reel__shot { position: relative; flex: 0 0 calc(100% - var(--peek)); aspect-ratio: 5 / 3; overflow: hidden; scroll-snap-align: start; border-radius: var(--radius-md); background: var(--surface-sunken); }
+.reel__shot[data-state="next"], .reel__shot:has(video) { cursor: pointer; }
+.reel__shot > :is(img, video) { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: top; }
+.reel--feature .reel__shot { max-height: calc(100vh - 13rem); } /* fits under the header + sticky toggle */
+/* A video's play/pause control: an invisible button over the whole screen (click anywhere) */
+.reel__play { position: absolute; inset: 0; padding: 0; background: none; border: 0; border-radius: inherit; cursor: pointer; }
+.reel__dots { display: flex; justify-content: center; gap: 0.15rem; margin: 0; padding: 0; list-style: none; }
+.reel__dot { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; padding: 0; background: none; border: 0; color: var(--ink); cursor: pointer; }
+.reel__dot::after { content: ""; width: 0.55rem; height: 0.55rem; border: 1.5px solid currentColor; border-radius: var(--radius-pill); transition: background-color var(--dur-color), opacity var(--dur-color); }
+.reel__dot:hover::after { background: var(--hl); }
+.reel__dot[aria-current="true"]::after { background: currentColor; }
+.reel__dot--video::after { --done: currentColor; --todo: color-mix(in srgb, currentColor 30%, transparent);
+  width: 0.6rem; height: 0.7rem; border: 0; border-radius: 0; clip-path: polygon(0 0, 100% 50%, 0 100%); opacity: 0.45; }
+/* the fill shows progress; outranks the generic current/hover dot fills above */
+.reel__dots .reel__dot--video::after { background: linear-gradient(to right, var(--done) calc(var(--p, 0) * 100%), var(--todo) 0); }
+.reel__dot--video:not([data-started])::after { --todo: currentColor; } /* not started: a solid icon */
+.reel__dot--video:hover::after { opacity: 0.75; }
+.reel__dot--video[aria-current="true"]::after { opacity: 1; }
+.reel__dot--video[data-playing]::after { clip-path: polygon(evenodd, 0 0, 35% 0, 35% 100%, 0 100%, 0 0, 65% 0, 100% 0, 100% 100%, 65% 100%, 65% 0); }
+/* Hover cue on a video: a small play/pause badge in its corner, for mouse users only */
+.reel__cue { position: absolute; left: 0.75rem; bottom: 0.75rem; display: grid; place-items: center; width: 2.25rem; height: 2.25rem;
+  border-radius: var(--radius-pill); background: color-mix(in srgb, var(--cream) 88%, transparent); color: var(--pine);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; transition: opacity var(--dur-color); }
+.reel__cue svg { grid-area: 1 / 1; width: 0.9rem; height: 0.9rem; }
+.reel__cue svg + svg, .reel__shot[data-playing] .reel__cue svg:first-child { display: none; }
+.reel__shot[data-playing] .reel__cue svg + svg { display: block; }
+@media (hover: hover) { .reel__shot[data-state="active"]:hover .reel__cue { opacity: 1; } }
+.reel__play:focus-visible .reel__cue { opacity: 1; }
+.reel__frame:focus-visible, .reel__dot:focus-visible, .reel__play:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+.reel__play:focus-visible { outline-offset: -4px; }
+
+/* ---- Contact: the second green slab ---- */
+.contact { background: var(--stage); color: var(--on-stage); padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.contact .eyebrow { color: var(--on-stage-muted); }
+.contact__title { margin-top: 0.75rem; font-size: clamp(2.5rem, 5.5vw, 4.25rem); line-height: 1; letter-spacing: -0.02em; }
+.reach { margin: clamp(2rem, 4vw, 3rem) 0 0; padding: 0; list-style: none; }
+.reach li { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 0 1.5rem; border-top: 1.5px solid var(--on-stage); }
+.reach li:last-child { border-bottom: 1.5px solid var(--on-stage); }
+.reach__link { grid-column: 1; display: grid; grid-template-columns: minmax(5.5rem, 8rem) 1fr; align-items: center; gap: 1rem; padding-block: 1.1rem; color: var(--on-stage); text-decoration: none; }
+.reach__label { font: 500 0.8125rem/1.3 var(--font-sans); letter-spacing: 0.1em; text-transform: uppercase; }
+.reach__value { font: 400 clamp(1.6rem, 4.4vw, 3rem)/1.1 var(--font-display); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.reach__copy { grid-column: 2; }
+.reach__go { grid-column: 3; display: block; color: var(--on-stage); }
+.reach__go svg { display: block; width: 1.4rem; height: 1.4rem; }
+.reach li:has(.reach__go:hover) .reach__value .hl { --hs: 100%; color: var(--on-accent); }
+.contact .link { color: var(--on-stage); }
+.contact :focus-visible { outline-color: var(--on-stage); }
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 2rem; font: 500 0.875rem/1.3 var(--font-sans); color: var(--ink-muted); }
+
+/* ---- Narrow screens ---- */
+@media (max-width: 899px) {
+  .about__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .proj__toggle { grid-template-columns: minmax(0, 1fr) auto; gap: 0.35rem 1rem; padding: 1.2rem 0; }
+  .proj__title { grid-column: 1; grid-row: 1; }
+  .proj__end { grid-column: 2; grid-row: 1; }
+  .proj__desc, .proj__tags { grid-column: 1 / -1; }
+  .proj__inner { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .proj__meta, .proj__text { grid-column: 1; }
+  .proj__meta { grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: 0.75rem 1.25rem; }
+  .proj__links { grid-column: 1 / -1; grid-auto-flow: column; justify-content: start; gap: 0.6rem 1.5rem; }
+  .reel { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .reel > .proj__meta, .reel__more, .reel__pair, .reel__screens { grid-column: 1; }
+  .reel__pair { grid-template-columns: minmax(0, 1fr); }
+  .reel .proj__links { grid-auto-flow: row; }
+  .reel__frame { border-radius: 0; }
+  .reel__shot { flex-basis: 85%; }
+  .reel--feature .reel__shot { max-height: none; }
+  .reel--feature .reel__screens { order: -1; } /* demo first on phones */
+}
+@media (max-width: 640px) {
+  .reach li { grid-template-columns: minmax(0, 1fr) auto; }
+  .reach__link { grid-template-columns: 1fr; gap: 0.25rem; }
+  .reach__go { grid-column: 2; grid-row: 1; }
+  .reach__copy { grid-column: 1; grid-row: 2; justify-self: start; margin-bottom: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sweep { animation: none; background-size: 100% var(--sweep-h); }
+  .proj__panel, .proj__icon::before, .proj__icon::after, .reel__dot::after, .reel__cue { transition: none; }
+}

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Rea Khairallah is a full-stack software engineering student building projects in JavaScript, PHP, MySQL and AI-integrated applications.">
+<title>Rea Khairallah | Full-Stack Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to projects</a>
+
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <nav aria-label="Sections">
+      <a class="link" href="#about"><span class="hl">About me</span></a>
+      <a class="link" href="#work"><span class="hl">Projects</span></a>
+    </nav>
+    <a class="btn btn--compact" href="#contact">Contact me</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <p class="status"><span class="status__dot" aria-hidden="true"></span>Open to summer 2027 SWE internships</p>
+    <h1 id="hero-title">Hi, I&rsquo;m Rea Khairallah, <em>a <span class="sweep">full-stack software engineer</span>.</em></h1>
+    <div class="hero__cta">
+      <a class="btn" href="#work">See my projects</a>
+      <a class="link" href="mailto:reakhairallah@gmail.com"><span class="hl">Email me</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <p class="skills">JavaScript &middot; PHP &middot; MySQL &middot; Java</p>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="wrap about__grid">
+      <div class="about__head">
+        <p class="eyebrow">About</p>
+        <h2 class="about__title" id="about-title">A little <em>about me.</em></h2>
+      </div>
+      <div class="about__body">
+        <p class="about__lede">I&rsquo;m Rea, a third-year <span class="mark" tabindex="0">Computer Science student</span> at LAU who likes turning ideas into <span class="mark" tabindex="0">working full-stack systems</span>, from the database up to the interface.</p>
+        <p class="about__more">I like carrying a feature all the way through, from the schema to the screen someone actually uses. I&rsquo;m looking for a team that takes code quality and mentorship seriously.</p>
+        <dl class="facts">
+          <div><dt>Background</dt><dd>3rd-year Computer Science student, Lebanese American University (LAU)</dd></div>
+          <div><dt>Tools</dt><dd>PHP, MySQL, JavaScript, schema design, AI API integration</dd></div>
+          <div><dt>Looking for</dt><dd>Summer 2027 software engineering internship</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="work__head">
+        <h2 class="work__title" id="work-title">Selected <em>work</em></h2>
+        <p class="work__hint">Click a project to open the details.</p>
+      </div>
+      <ul class="proj-list">
+        <li class="proj">
+          <h3>
+            <button class="proj__toggle" type="button" id="proj-1-btn" aria-expanded="false" aria-controls="proj-1-panel">
+              <span class="proj__title"><span class="hl">Settled</span></span>
+              <span class="proj__desc">A group trip planner that settles the bill and the decision-making, not just the itinerary.</span>
+              <span class="proj__tags">JavaScript &middot; PHP &middot; Gemini API</span>
+              <span class="proj__end"><span class="proj__icon" aria-hidden="true"></span></span>
+            </button>
+          </h3>
+          <div class="proj__panel" id="proj-1-panel" role="region" aria-labelledby="proj-1-btn">
+            <div class="proj__clip">
+              <div class="proj__inner">
+                <div class="reel reel--feature">
+                  <div class="proj__meta">
+                    <dl>
+                      <div><dt>Role</dt><dd>Full-stack developer</dd></div>
+                      <div><dt>Team</dt><dd>Solo</dd></div>
+                      <div><dt>Tools</dt><dd>JavaScript, PHP, MySQL, Gemini API</dd></div>
+                    </dl>
+                    <div class="proj__links">
+                      <a class="link" href="https://github.com/reakhairallah/settled" target="_blank" rel="noopener noreferrer"><span class="hl">Source on GitHub</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                  </div>
+                  <div class="reel__screens">
+                    <div class="reel__frame" tabindex="0" role="region" aria-label="Settled screens">
+                      <figure class="reel__shot"><video src="demos/settled/itinerary.mp4#t=0.001" muted loop playsinline preload="metadata" aria-label="Using Settled: the trip dashboard, then the itinerary, where members vote on activities, a downvoted slot is swapped for another, and a &lsquo;Why this pick&rsquo; note explains who an activity suits."></video></figure>
+                      <figure class="reel__shot"><img src="demos/settled/expenses.webp" alt="Expenses for a Lisbon trip: a form to add an expense and keep it personal or split it with chosen members, above the shared costs and the trip total." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/settled/settle-up.webp" alt="Settle Up: how much you&rsquo;re owed, the two payments that close it out, and every member&rsquo;s balance." width="1920" height="1153" loading="lazy"></figure>
+                    </div>
+                  </div>
+                  <div class="proj__text reel__pair">
+                    <div>
+                      <h4>The concept</h4>
+                      <p>A group trip planner built around two ideas: the itinerary should reflect everyone&rsquo;s preferences, not just the loudest person&rsquo;s, and splitting costs afterward shouldn&rsquo;t be a math problem. Each member sets an energy level and interests, and Settled generates an itinerary from the group&rsquo;s combined preferences and budget. During the trip, members log expenses, either shared with chosen people, which feeds the settle-up, or kept personal just for tracking.</p>
+                    </div>
+                    <div>
+                      <h4>How it works</h4>
+                      <ul>
+                        <li>Live voting on every slot: a majority downvote swaps it for the next-best activity, a majority upvote locks it in, with no admin step</li>
+                        <li>&ldquo;Why this pick&rdquo;: a Gemini-generated note per slot explaining who an activity suits, and honestly who it suits less, with a graceful fallback if the API fails</li>
+                        <li>A greedy debt-simplification algorithm settles up with the minimum number of payments</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="proj">
+          <h3>
+            <button class="proj__toggle" type="button" id="proj-5-btn" aria-expanded="false" aria-controls="proj-5-panel">
+              <span class="proj__title"><span class="hl">Bottle</span></span>
+              <span class="proj__desc">An anonymous message-exchange app built on reciprocity: write a message to a stranger before you&rsquo;re allowed to read one.</span>
+              <span class="proj__tags">PHP &middot; MySQL &middot; JavaScript</span>
+              <span class="proj__end"><span class="proj__icon" aria-hidden="true"></span></span>
+            </button>
+          </h3>
+          <div class="proj__panel" id="proj-5-panel" role="region" aria-labelledby="proj-5-btn">
+            <div class="proj__clip">
+              <div class="proj__inner">
+                <div class="reel reel--feature">
+                  <div class="proj__meta">
+                    <dl>
+                      <div><dt>Role</dt><dd>Full system design and architecture</dd></div>
+                      <div><dt>Team</dt><dd>Solo</dd></div>
+                      <div><dt>Tools</dt><dd>PHP, MySQL, JavaScript, Claude Code</dd></div>
+                    </dl>
+                    <div class="proj__links">
+                      <a class="link" href="https://github.com/reakhairallah/bottle" target="_blank" rel="noopener noreferrer"><span class="hl">GitHub: core build</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                      <a class="link" href="https://github.com/reakhairallah/bottle-extras" target="_blank" rel="noopener noreferrer"><span class="hl">GitHub: redesign with Claude Code</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                  </div>
+                  <div class="reel__screens">
+                    <div class="reel__frame" tabindex="0" role="region" aria-label="Bottle screens">
+                      <figure class="reel__shot"><video src="demos/bottle/draw-clip.mp4#t=0.001" muted loop playsinline preload="metadata" aria-label="Drawing a bottle: message bottles drift across the animated ocean."></video></figure>
+                      <figure class="reel__shot"><img src="demos/bottle/throw.webp" alt="Writing a new bottle: a torn notebook page over the ocean, with a 255-character limit, a &lsquo;Seal until a future date&rsquo; toggle and a Throw button." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/bottle/my-bottles.webp" alt="The Your Bottles page: three thrown messages marked neglected, adrift and completed, each with the one-line marks other people left on it." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/bottle/archive.webp" alt="The Archive: a grid of retired messages, each marked completed with three marks, under a count of 28 bottles that have left circulation." width="1920" height="1153" loading="lazy"></figure>
+                    </div>
+                  </div>
+                  <div class="proj__text reel__pair">
+                    <div>
+                      <h4>The concept</h4>
+                      <p>Messages go into circulation anonymously, and anyone who draws one can leave a one-line &ldquo;mark&rdquo; on it, so replies build up without identities ever being revealed.</p>
+                    </div>
+                    <div>
+                      <h4>How it works</h4>
+                      <ul>
+                        <li>No accounts: a silently issued, persistent anonymous token</li>
+                        <li>A weighted score, not pure randomness, picks what surfaces next, favoring neglected, rarely seen and popular messages</li>
+                        <li>Messages retire to a public archive when they go unanswered too long or collect enough replies</li>
+                        <li>Time-locked bottles: a message can be sealed so no one can draw it before a chosen date</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="proj">
+          <h3>
+            <button class="proj__toggle" type="button" id="proj-3-btn" aria-expanded="false" aria-controls="proj-3-panel">
+              <span class="proj__title"><span class="hl">DineWise</span></span>
+              <span class="proj__desc">A restaurant reservation platform with a real pricing engine, running entirely in the browser.</span>
+              <span class="proj__tags">JavaScript &middot; localStorage</span>
+              <span class="proj__end"><span class="proj__icon" aria-hidden="true"></span></span>
+            </button>
+          </h3>
+          <div class="proj__panel" id="proj-3-panel" role="region" aria-labelledby="proj-3-btn">
+            <div class="proj__clip">
+              <div class="proj__inner">
+                <div class="reel reel--feature">
+                  <div class="proj__meta">
+                    <dl>
+                      <div><dt>Role</dt><dd>Front-end developer</dd></div>
+                      <div><dt>Team</dt><dd>Solo</dd></div>
+                      <div><dt>Tools</dt><dd>JavaScript, localStorage</dd></div>
+                    </dl>
+                    <div class="proj__links">
+                      <a class="link" href="https://github.com/reakhairallah/dinewise" target="_blank" rel="noopener noreferrer"><span class="hl">Source on GitHub</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                  </div>
+                  <div class="reel__screens">
+                    <div class="reel__frame" tabindex="0" role="region" aria-label="DineWise screens">
+                      <figure class="reel__shot"><img src="demos/dinewise/bill.webp" alt="Pre-order and invites: menu items with quantities, guests marked accepted, declined or pending, and a summary with a peak-time price adjustment and the bill split between the host and the accepted guest." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/dinewise/map.webp" alt="Choosing a table: party size, date and time above an overhead photo of the dining room, with each table marked by its seat count and colored by availability." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/dinewise/overlay.webp" alt="A restaurant&rsquo;s detail card for Koān: rating, distance, cuisine and hours, sustainability and dietary tags, allergen tags for shellfish, soy and fish, and a Book Now button." width="1920" height="1153" loading="lazy"></figure>
+                    </div>
+                  </div>
+                  <div class="proj__text reel__pair">
+                    <div>
+                      <h4>The concept</h4>
+                      <p>A restaurant reservation platform with a front-end-only architecture: everything persists in the browser&rsquo;s localStorage. Guests create a profile, get recommendations, pick a table from a photo of the dining room, pre-order, invite friends to split the bill, and manage bookings from their own dashboard.</p>
+                    </div>
+                    <div>
+                      <h4>How it works</h4>
+                      <ul>
+                        <li>A rule-based pricing engine: peak and off-peak rates from each restaurant&rsquo;s own hours, coupon codes and a loyalty discount</li>
+                        <li>A recommendation engine scores restaurants against cuisine, dietary and allergy preferences, and always ranks allergy conflicts last</li>
+                        <li>Tables are picked on real floor photos, with clickable hotspots colored by live availability</li>
+                        <li>Group bookings: invite friends, track RSVPs, and the bill splits automatically among the guests who accept</li>
+                        <li>A waitlist for fully booked slots, and a booking cap to prevent runaway reservations</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="proj">
+          <h3>
+            <button class="proj__toggle" type="button" id="proj-4-btn" aria-expanded="false" aria-controls="proj-4-panel">
+              <span class="proj__title"><span class="hl">Lost In Translation</span></span>
+              <span class="proj__desc">A multiplayer party game where sentences get mangled through a 6-language translation chain, and players race to guess the original before it all falls apart.</span>
+              <span class="proj__tags">PHP</span>
+              <span class="proj__end"><span class="proj__icon" aria-hidden="true"></span></span>
+            </button>
+          </h3>
+          <div class="proj__panel" id="proj-4-panel" role="region" aria-labelledby="proj-4-btn">
+            <div class="proj__clip">
+              <div class="proj__inner">
+                <div class="reel">
+                  <div class="proj__meta">
+                    <dl>
+                      <div><dt>Role</dt><dd>Backend/database engineer</dd></div>
+                      <div><dt>Team</dt><dd>Team of 3</dd></div>
+                      <div><dt>Tools</dt><dd>PHP</dd></div>
+                    </dl>
+                    <div class="proj__links">
+                      <a class="link" href="https://github.com/reakhairallah/lost-in-translation" target="_blank" rel="noopener noreferrer"><span class="hl">Source on GitHub</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                  </div>
+                  <div class="reel__screens">
+                    <div class="reel__frame" tabindex="0" role="region" aria-label="Lost In Translation screens">
+                      <figure class="reel__shot"><img src="demos/lost-in-translation/start-screen.webp" alt="The Lost In Translation start screen: the headline &ldquo;Guess the sentence that got lost along the way&rdquo; above a Start New Round button." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/lost-in-translation/mid-round.webp" alt="A round in progress: a 10-second countdown beside the mangled sentence &ldquo;He misses his boat very much,&rdquo; with a guess field and a hint button." width="1920" height="1153" loading="lazy"></figure>
+                      <figure class="reel__shot"><img src="demos/lost-in-translation/reveal.webp" alt="The reveal: the original idiom &ldquo;He really missed the boat on that one&rdquo; above its chain of translations through Japanese, Arabic, Finnish, Swahili, Hungarian and Korean." width="1920" height="1153" loading="lazy"></figure>
+                    </div>
+                  </div>
+                  <div class="proj__text reel__pair">
+                    <div>
+                      <h4>What I built</h4>
+                      <p>A normalized database schema handling rounds, translation chain history, guesses, hints and a votable leaderboard; a server-owned round lifecycle so the game clock and state can never be manipulated client-side; and a fuzzy string-matching scoring engine balancing correctness against speed and hint usage.</p>
+                    </div>
+                    <div>
+                      <h4>Technical highlights</h4>
+                      <p>Solved a real race condition where two players triggering &ldquo;next round&rdquo; at once could orphan game state, fixed with a compare-and-swap pattern on the game state table. Designed the API contract with a teammate&rsquo;s translation service ahead of implementation, then built and tested against a functional stand-in to stay unblocked.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="proj">
+          <h3>
+            <button class="proj__toggle" type="button" id="proj-2-btn" aria-expanded="false" aria-controls="proj-2-panel">
+              <span class="proj__title"><span class="hl">Sketchify</span></span>
+              <span class="proj__desc">A live AI sketch-to-design tool, built with a team of six.</span>
+              <span class="proj__tags">Next.js &middot; Gemini API</span>
+              <span class="proj__end"><span class="proj__icon" aria-hidden="true"></span></span>
+            </button>
+          </h3>
+          <div class="proj__panel" id="proj-2-panel" role="region" aria-labelledby="proj-2-btn">
+            <div class="proj__clip">
+              <div class="proj__inner">
+                <div class="reel">
+                  <div class="proj__meta">
+                    <dl>
+                      <div><dt>Role</dt><dd>Front-end and prompt design</dd></div>
+                      <div><dt>Team</dt><dd>Team of 6</dd></div>
+                      <div><dt>Tools</dt><dd>Next.js, Gemini API, Vercel, Git/GitHub, Jira</dd></div>
+                    </dl>
+                    <div class="proj__links">
+                      <a class="link" href="https://sketchifyy.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="hl">Live site</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                  </div>
+                  <div class="proj__text reel__more">
+                    <div>
+                      <h4>The concept</h4>
+                      <p>A web app that turns rough sketches into styled visual designs using Google Gemini. Built by a team of six with Next.js, deployed live on Vercel, with the work coordinated through Git/GitHub and Jira.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="proj">
+          <h3>
+            <button class="proj__toggle" type="button" id="proj-6-btn" aria-expanded="false" aria-controls="proj-6-panel">
+              <span class="proj__title"><span class="hl">Mobile Quiz App</span></span>
+              <span class="proj__desc">A full-stack Android quiz app with dynamic question processing and storage.</span>
+              <span class="proj__tags">Java &middot; PHP</span>
+              <span class="proj__end"><span class="proj__icon" aria-hidden="true"></span></span>
+            </button>
+          </h3>
+          <div class="proj__panel" id="proj-6-panel" role="region" aria-labelledby="proj-6-btn">
+            <div class="proj__clip">
+              <div class="proj__inner">
+                <div class="reel">
+                  <div class="proj__meta">
+                    <dl>
+                      <div><dt>Role</dt><dd>Full-stack developer</dd></div>
+                      <div><dt>Team</dt><dd>Solo</dd></div>
+                      <div><dt>Tools</dt><dd>Java, PHP, XAMPP</dd></div>
+                    </dl>
+                  </div>
+                  <div class="proj__text reel__more">
+                    <div>
+                      <h4>The concept</h4>
+                      <p>A full-stack Android quiz app, built end to end: a Java frontend talking to a PHP backend running on XAMPP. I built the quiz system, with questions processed and stored dynamically, plus the client-server communication and data handling between the app and the server.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2 class="contact__title" id="contact-title">Let&rsquo;s talk. <em>I&rsquo;d love to hear from you.</em></h2>
+      <ul class="reach">
+        <li>
+          <a class="reach__link" href="mailto:reakhairallah@gmail.com"><span class="reach__label">Email</span><span class="reach__value"><span class="hl">reakhairallah@gmail.com</span></span></a>
+          <button class="link reach__copy" type="button" data-copy="reakhairallah@gmail.com"><span class="hl" data-copy-label>Copy address</span></button>
+          <a class="reach__go" href="mailto:reakhairallah@gmail.com" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </li>
+        <li>
+          <a class="reach__link" href="https://www.linkedin.com/in/reakhairallah"><span class="reach__label">LinkedIn</span><span class="reach__value"><span class="hl">in/reakhairallah</span></span></a>
+          <a class="reach__go" href="https://www.linkedin.com/in/reakhairallah" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </li>
+        <li>
+          <a class="reach__link" href="https://github.com/reakhairallah"><span class="reach__label">GitHub</span><span class="reach__value"><span class="hl">reakhairallah</span></span></a>
+          <a class="reach__go" href="https://github.com/reakhairallah" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap site-footer">
+  <span>&copy; <span id="year">2026</span> Rea Khairallah</span>
+  <a class="link" href="#top"><span class="hl">Back to top</span></a>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
